@@ -1,0 +1,313 @@
+{
+	"variables": [],
+	"info": {
+		"name": "holiday-users",
+		"_postman_id": "dcba22d8-0dfb-f286-8ec1-1126886c16a1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET a user",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T142857Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=fc45322d767e730bcf4a60625e8f4ba92fdbbbfb1883f94db46b9e904b3260c5",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET all user ids",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T142931Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=86a2b7da5f8feeb102c53086fbab71a9fd583232f387fef8d2534a8104400e20",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT (update) user",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T152034Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-length;content-type;host;x-amz-date, Signature=97ea87b8dfc3f7cd256d3795cc18a2e0f547bd19a3583ee78cd16b0d63283a6b",
+						"description": ""
+					},
+					{
+						"key": "Content-Length",
+						"value": 21,
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"forename\":\"John\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT (update) user - all fields",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T162822Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-length;content-type;host;x-amz-date, Signature=857bf5d22bed2d9a197a238445fba24d106ab322e10cf5e5b17c69a3af3e6377",
+						"description": ""
+					},
+					{
+						"key": "Content-Length",
+						"value": 75,
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"johnjohn@somewhere.net\",\"surname\":\"Jackson\",\"forename\":\"Freddie\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT  users/ - create user",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T163018Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-length;content-type;host;x-amz-date, Signature=8d500aa932085c59649bca74396916752e3a8098a7618ac9d243402c6d067586",
+						"description": ""
+					},
+					{
+						"key": "Content-Length",
+						"value": 74,
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"mike@somewhere.net\",\"surname\":\"Michaelson\",\"forename\":\"Michael\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": {
+						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
+						"secretKey": "",
+						"saveToRequest": true
+					}
+				},
+				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/3292267b1b09ae4691745cc0d125de0d",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Host",
+						"value": "bepywqavse.execute-api.eu-west-2.amazonaws.com",
+						"description": ""
+					},
+					{
+						"key": "X-Amz-Date",
+						"value": "20170723T163226Z",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=918e6e8634d82efa8e8a1b87f940654f3244741be57d7c1fd5ec89cbcbcb1c33",
+						"description": ""
+					},
+					{
+						"key": "Content-Length",
+						"value": "75",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
