@@ -10,14 +10,6 @@
 		{
 			"name": "GET a user",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
 				"method": "GET",
 				"header": [
@@ -38,12 +30,12 @@
 					},
 					{
 						"key": "X-Amz-Date",
-						"value": "20170723T142857Z",
+						"value": "20170723T222338Z",
 						"description": ""
 					},
 					{
 						"key": "Authorization",
-						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=fc45322d767e730bcf4a60625e8f4ba92fdbbbfb1883f94db46b9e904b3260c5",
+						"value": "AWS4-HMAC-SHA256 Credential=/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=b0ddf20fe8806424984c2c145cd99a6a205e71befafe18db412542199c854e67",
 						"description": ""
 					}
 				],
@@ -55,14 +47,6 @@
 		{
 			"name": "GET all user ids",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users",
 				"method": "GET",
 				"header": [
@@ -83,12 +67,12 @@
 					},
 					{
 						"key": "X-Amz-Date",
-						"value": "20170723T142931Z",
+						"value": "20170723T222209Z",
 						"description": ""
 					},
 					{
 						"key": "Authorization",
-						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=86a2b7da5f8feeb102c53086fbab71a9fd583232f387fef8d2534a8104400e20",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=63ae9123b18d48ed35777e3436e94b74f9660dbabd48707d4a58474ae562f156",
 						"description": ""
 					}
 				],
@@ -100,14 +84,6 @@
 		{
 			"name": "PUT (update) user",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
 				"method": "PUT",
 				"header": [
@@ -138,7 +114,7 @@
 					},
 					{
 						"key": "Content-Length",
-						"value": 21,
+						"value": "21",
 						"description": ""
 					}
 				],
@@ -153,14 +129,6 @@
 		{
 			"name": "PUT (update) user - all fields",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/812e235d64abf4cd7b1b678fce4478e7",
 				"method": "PUT",
 				"header": [
@@ -191,7 +159,7 @@
 					},
 					{
 						"key": "Content-Length",
-						"value": 75,
+						"value": "75",
 						"description": ""
 					}
 				],
@@ -206,14 +174,6 @@
 		{
 			"name": "PUT  users/ - create user",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users",
 				"method": "POST",
 				"header": [
@@ -259,14 +219,6 @@
 		{
 			"name": "DELETE user",
 			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": {
-						"accessKey": "AKIAJKNJJLC6JVQRTRPQ",
-						"secretKey": "",
-						"saveToRequest": true
-					}
-				},
 				"url": "https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users/3292267b1b09ae4691745cc0d125de0d",
 				"method": "DELETE",
 				"header": [
@@ -287,12 +239,12 @@
 					},
 					{
 						"key": "X-Amz-Date",
-						"value": "20170723T163226Z",
+						"value": "20170723T163308Z",
 						"description": ""
 					},
 					{
 						"key": "Authorization",
-						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=918e6e8634d82efa8e8a1b87f940654f3244741be57d7c1fd5ec89cbcbcb1c33",
+						"value": "AWS4-HMAC-SHA256 Credential=AKIAJKNJJLC6JVQRTRPQ/20170723/eu-west-2/execute-api/aws4_request, SignedHeaders=accept;content-type;host;x-amz-date, Signature=2a5cf22830efaaf1cfdc0567af960edd19a2605aac04140f7ee2f67e36491d7e",
 						"description": ""
 					},
 					{
