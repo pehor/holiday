@@ -65,7 +65,7 @@ var emailChecker = (str) => {
  * Tests string to only contain hexadecimal characters
  */
 var hashChecker = (str) => {
-    return /^[abcdef0-9]+$/.test(str);
+    return /^[abcdef0-9]{32}$/.test(str);
 };
 
 /**
