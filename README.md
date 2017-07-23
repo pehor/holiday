@@ -3,7 +3,7 @@ Users REST API implementation
 **Backend**
 
 Uses AWS Lambda serverless architecture, runs code in Node.js. 
-API is exposed through AWS API Gateway. It uses https; the client needs to send the public key with the requests.
+API is exposed through AWS API Gateway.
 Data is stored in AWS Dynamo DB, logs are saved in CloudWatch.
 
 Code was simple enough to be contained in one file.

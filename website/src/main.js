@@ -1,5 +1,3 @@
-import CONFIG from './config';
-
 (function(){
     $( document ).ready(function() {
         $('.all-ids').click((e)=>{
