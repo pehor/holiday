@@ -214,6 +214,7 @@ var handleNoId = (event, result, context, callback) => {
             for (i = 0; i < data.Items.length; ++i){
                 keys[i] = data.Items[i].userid;
             }
+            
             result.body = JSON.stringify(keys);
             result.statusCode = 200;
             callback(null, result);
@@ -385,7 +386,9 @@ exports.handler = (event, context, callback) => {
     var result = {
         'isBase64Encoded': false,
         'statusCode': 200,
-        'headers': null,
+        'headers': {
+            'Access-Control-Allow-Origin': '*'
+        },
         'body': null
     };
     
