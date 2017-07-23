@@ -1,6 +1,6 @@
 Users REST API implementation
 
-*Backend*
+**Backend**
 
 Uses AWS Lambda serverless architecture, runs code in Node.js. 
 API is exposed through AWS API Gateway. It uses https; the client needs to send the public key with the requests.
@@ -24,3 +24,10 @@ Response codes and errors are implemented.
 The API is currently available at
 https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/
 
+**Frontend**
+
+The frontend is served from S3
+
+https://s3.eu-west-2.amazonaws.com/psys-holiday-users-ui/website/index.html
+
+It can be used to retrieve the list of user ids

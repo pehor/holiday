@@ -1,0 +1,16 @@
+{
+    "name": "holiday-users",
+    "version": "0.0.1",
+    "scripts": {
+        "build": "webpack",
+        "serve": "webpack-dev-server --host 0.0.0.0 --inline --content-base ./dist"
+    },
+    "devDependencies": {
+        "webpack": "3.3.0",
+        "webpack-dev-server": "^2.3.0"
+    },
+    "depencies": {
+        "bootstrap": "3.3.6",
+        "jquery": "2.1.3"
+    }
+}
