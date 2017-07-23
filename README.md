@@ -1,6 +1,6 @@
 Users REST API implementation
 
-Backend
+*Backend*
 
 Uses AWS Lambda serverless architecture, runs code in Node.js. Logs are saved in CloudWatch.
 API is exposed through AWS API Gateway.
@@ -21,4 +21,6 @@ Things to try:
 
 Response codes and errors are implemented. 
 
+The API is currently available at
+https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/
 
