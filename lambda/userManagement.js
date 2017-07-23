@@ -1,3 +1,19 @@
+/**
+ * Node.js server code running in AWS lambda
+ * Implementing a REST API for user data
+ * Triggered by API Gateway
+ * Storing user data in Dynamo DB
+ * 
+ * Handles:
+ * /users
+ *     GET - list all user ids
+ *     POST + JSON in body - creates new user
+ *     /{userid}
+ *         GET - returns user record
+ *         PUT + JSON in body - modifies user record
+ *         DELETE - deletes user record
+ * 
+ */
 var doc = require('dynamodb-doc');
 var crypto = require('crypto');
 
@@ -7,33 +23,43 @@ var tableName = 'holiday-users';
 //defines the fields that can be set and updated for a user
 var openFields = ['email', 'forename', 'surname'];
 
-var commonDebug = (event) => {
-    var resultString = 'Method was: ' + event.httpMethod;
-    resultString += ' path was: ' + event.path;
-    if (event.pathParameters && event.pathParameters.userid){
-        resultString += ' userid: ' + event.pathParameters.userid;
-    }
-    return resultString;
-};
-
-var makeDummyObject = (id) => {
-    return {
-        userid: id,
-        email: 'dummy@dummy.com',
-        forename: 'Forename',
-        surname: 'Surname',
-        created: 'today'
-    };
-};
-
 /**
  * Tests string to only contain letters, ' and - and spaces, and should start
  * with letters.
  * Note this should be improved to support unicode characters
  */
 var nameChecker = (str) => {
+    if(str.length > 254){
+        return false;
+    }
     return /^[a-zA-Z]+[a-zA-Z \-']+$/.test(str);
 };
+
+/**
+ * Tests for valid email format
+ */
+var emailChecker = (str) => {
+    var checker = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-?\.?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$/;
+    var parts;
+    var domainParts;
+    
+    if(str.length > 254){
+        return false;
+    }
+    if(!checker.test(str)){
+        return false;
+    }
+    
+    parts = str.split("@");
+    if(parts[0].length > 64){
+        return false;
+    }
+    
+    domainParts = parts[1].split(".");
+    if(domainParts.some((part) => part.length > 63)) return false;
+    
+    return true;
+}
 
 /**
  * Tests string to only contain hexadecimal characters
@@ -64,9 +90,9 @@ var validateUserData = (data, needAll) => {
     }
     if (data.email || needAll){
         if (typeof data.email !== 'string' ||
-            !data.email.length || data.email.indexOf('@') === -1){
+            !data.email.length || !emailChecker(data.email)){
 
-            result = 'Bad email supplied ';
+            result += 'Bad email supplied ';
         }
     }
     if (data.forename || needAll){
@@ -78,7 +104,7 @@ var validateUserData = (data, needAll) => {
     }
     if (data.surname || needAll){
         if (typeof data.surname !== 'string' ||
-            !data.surname.length || !nameChecker(data.forename)){
+            !data.surname.length || !nameChecker(data.surname)){
     
             result += 'Bad surname supplied';
         }
@@ -146,64 +172,53 @@ var handlePOST = (event, result, context, callback) => {
             console.log('success: ' + JSON.stringify(data, null, '  '));
             result.body = 'Added new user to dynamo: ' + JSON.stringify(newUser);
             result.statusCode = 201;
+            //returning a Location header with a url to the new item
             result.headers = {
                 Location: event.path + '/' + newUser.userid
             };
             callback(null, result);
         }
     });
-            
 };
 
 /**
- * Used to handle email query
+ * Used to handle listing users. Returns the list of userids in the db
+ * Note that this is for convenience and in the context of this assignment,
+ * a real system would likely not expose this publicly
+ * 
+ * GET /users
+ * 
  */
 var handleNoId = (event, result, context, callback) => {
-    var email = event.queryStringParameters.email;
-    var params;
-    if(email){
-        
-        //result.body = event.queryStringParameters.email;
-        //callback(null, result);
-        //return;
-        
-        params = {
-            TableName : tabelName,
-            KeyConditionExpression: "#em = :email",
-            ExpressionAttributeNames:{
-                "#em": "email"
-            },
-            ExpressionAttributeValues: {
-                ":email": event.queryStringParameters.email
-            }
-        };
-
-        dynamodb.query(params, (err, data) => {
-            if (err) {
-                console.error('Error getting item from dynamodb: ' + err);
-                result.body = 'Error getting item from dynamodb: ' + err;
-                result.statusCode = 500;
+    //return all items in dynamo
+    dynamodb.scan({
+        TableName: tableName
+    }, (err, data) => {
+        var keys = [];
+        var i;
+        if (err) {
+            console.error('Error getting item from dynamodb: ' + err);
+            result.body = 'Error getting item from dynamodb: ' + err;
+            result.statusCode = 500;
+            callback(null, result);
+        }
+        else {
+            console.log('success: ' + JSON.stringify(data, null, '  '));
+            //handle not found
+            if (!data.Items.length){
+                result.statusCode = 404;
                 callback(null, result);
+                return;
             }
-            else {
-                console.log('success: ' + JSON.stringify(data, null, '  '));
-                //handle not found
-                if (!data.Items.length){
-                    result.statusCode = 404;
-                    callback(null, result);
-                    return;
-                }
-                result.body = data.Items.length + '';
-                //result.body = JSON.stringify(data.Items[0]);
-                result.statusCode = 200;
-                callback(null, result);
+            //extract all userids
+            for (i = 0; i < data.Items.length; ++i){
+                keys[i] = data.Items[i].userid;
             }
-        });
-    } else {
-        result.statusCode = 400;
-        callback(null, result);
-        return;
-    }
+            result.body = JSON.stringify(keys);
+            result.statusCode = 200;
+            callback(null, result);
+        }
+    });
 };
 
 /**
@@ -223,6 +238,7 @@ var handleGET = (event, result, context, callback) => {
         callback(null, result);
     }
     
+    //fetch from dynamo
     dynamodb.getItem({
         "TableName": tableName,
         "Key" : {
@@ -325,6 +341,7 @@ var handlePUT = (event, result, context, callback) => {
     });
     
 };
+
 /**
  * Handles deleting users for a given id
  * DELETE /users/<userid>
@@ -359,10 +376,12 @@ var handleDELETE = (event, result, context, callback) => {
         }
     });
     
-}
+};
 
+/**
+ * The entrypoint, handling all requests and dispatching to functions
+ */
 exports.handler = (event, context, callback) => {
-    //console.log(commonDebug(event));
     var result = {
         'isBase64Encoded': false,
         'statusCode': 200,
@@ -387,6 +406,4 @@ exports.handler = (event, context, callback) => {
             result.statusCode = 504;
             callback(null, result);
     }
-    
-    
 };
