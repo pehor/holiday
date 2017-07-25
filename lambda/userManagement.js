@@ -170,11 +170,13 @@ var handlePOST = (event, result, context, callback) => {
         }
         else {
             console.log('success: ' + JSON.stringify(data, null, '  '));
-            result.body = 'Added new user to dynamo: ' + JSON.stringify(newUser);
+            result.body = JSON.stringify(newUser);
             result.statusCode = 201;
             //returning a Location header with a url to the new item
             result.headers = {
-                Location: event.path + '/' + newUser.userid
+                Location: event.path + '/' + newUser.userid,
+                //repeating header as we would overwrite it
+                'Access-Control-Allow-Origin': '*'
             };
             callback(null, result);
         }
