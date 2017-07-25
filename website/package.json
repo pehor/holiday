@@ -2,12 +2,14 @@
     "name": "holiday-users",
     "version": "0.0.1",
     "scripts": {
-        "build": "webpack --progress --colors",
+        "build": "webpack",
         "serve": "webpack --progress --watch & webpack-dev-server --host 0.0.0.0 --inline --content-base ./dist"
     },
     "devDependencies": {
         "webpack": "3.3.0",
-        "webpack-dev-server": "^2.3.0"
+        "webpack-dev-server": "^2.3.0",
+        "css-loader": "^0.28.4",
+        "style-loader": "^0.18.2"
     },
     "depencies": {
         "bootstrap": "3.3.6",

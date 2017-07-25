@@ -408,7 +408,8 @@ exports.handler = (event, context, callback) => {
             handleDELETE(event, result, context, callback);
             break;
         default:
-            result.statusCode = 504;
+            result.statusCode = 405;
+            result.headers['Allow'] = 'GET, PUT, POST, DELETE'
             callback(null, result);
     }
 };

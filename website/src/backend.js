@@ -15,8 +15,25 @@ const Backend = {};
         return function(jqXHR, textStatus, errorThrown) {
             if(textStatus || errorThrown){
                 console.log('Ajax error, textStatus:' + textStatus + ' errorThrown: ' + errorThrown);
-                let result = textStatus;
-                result = result || errorThrown;
+                let result = errorThrown;
+                //errorThrown can't be relied upon
+                if (!result){
+                    switch(jqXHR.status){
+                        case 400:
+                            result = 'Bad request'
+                            break;
+                        case 404:
+                            result = 'Not found'
+                            break;
+                        case 500:
+                            result = 'Internal server error'
+                            break;
+                        case 405:
+                            result = 'Method not allowed'
+                            break;
+                    }
+                }
+                result = result || textStatus;
                 errorCallback(result);
                 return;
             }

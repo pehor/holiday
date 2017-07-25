@@ -26,8 +26,13 @@ https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/
 
 **Frontend**
 
+This a very simplistic webapp; Only to demonstrate usage of the api.
+
 The frontend is served from S3
 
 https://s3.eu-west-2.amazonaws.com/psys-holiday-users-ui/website/index.html
 
-It can be used to retrieve the list of user ids
+It can be used to query all the APIs of the backend.
+It gives simple error messages for failed queries.
+The webapp uses webpack to bundle the js and css files and to serve a local server for development. Javascript version is ES6.
+Further improvements would entail minifying code, testing the backend, transpiling to es5 for compatibility, moving CDN libraries to be bundled too, changing to react, etc.

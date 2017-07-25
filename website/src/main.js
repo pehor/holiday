@@ -4,7 +4,7 @@ import GetUser from './getuser';
 import CreateUser from './createuser';
 import UpdateUser from './updateuser';
 import DeleteUser from './deleteuser';
-
+require('../style/main.css');
 
 (function(){
     $( document ).ready(function() {
