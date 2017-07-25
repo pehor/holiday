@@ -2,8 +2,8 @@
     "name": "holiday-users",
     "version": "0.0.1",
     "scripts": {
-        "build": "webpack",
-        "serve": "webpack-dev-server --host 0.0.0.0 --inline --content-base ./dist"
+        "build": "webpack --progress --colors",
+        "serve": "webpack --progress --watch & webpack-dev-server --host 0.0.0.0 --inline --content-base ./dist"
     },
     "devDependencies": {
         "webpack": "3.3.0",

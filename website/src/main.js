@@ -1,17 +1,27 @@
+import backend from './backend';
+import GetAllUsers from './getallusers';
+import GetUser from './getuser';
+import CreateUser from './createuser';
+import UpdateUser from './updateuser';
+import DeleteUser from './deleteuser';
+
+
 (function(){
     $( document ).ready(function() {
-        $('.all-ids').click((e)=>{
-            //$('.result').text('lala');
-            $.ajax({
-                contentType: 'application/json',
-                type: 'GET',
-                url: 'https://bepywqavse.execute-api.eu-west-2.amazonaws.com/prod/users',
-                dataType: 'json',
-                success: (data)=>{
-                    $('#result').text(JSON.stringify(data, null, '    '));
-                }
-            });
-        });
+
+        GetAllUsers.setupAction();
+
+        GetUser.setupValidation();
+        GetUser.setupAction();
+
+        CreateUser.setupValidation();
+        CreateUser.setupAction();
+
+        UpdateUser.setupValidation();
+        UpdateUser.setupAction();
+
+        DeleteUser.setupValidation();
+        DeleteUser.setupAction();
     });
 }());
 

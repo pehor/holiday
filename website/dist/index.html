@@ -9,6 +9,10 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
 
+    <!-- LOAD BOOTSTRAPVALIDATOR -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+
     <!-- LOAD BOOTSTRAP -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,28 +25,140 @@
  
     <!-- LOAD WEBPACK BUNDLE -->
     <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
-
+    
     <style>
-        #display {
+        .tab-content, #tab-bar{
             margin: 2rem;
+        }
+        .panel, input {
+            max-width: 50rem;
         }
         .panel {
             min-height: 10rem;
-            max-width: 50rem;
             padding: 1rem;
+            white-space: pre-wrap;
+        }
+
+        .btn, input {
+            margin-bottom: 1rem;
+        }
+        .form-control-feedback {
+            position: relative;
+            display: inline;
+            margin: 1rem;
+        }
+        input.form-control {
+            display: inline;
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-default">
         <a class="navbar-brand" href="#">Holiday - users</a>
-        <ul class="nav navbar-nav">
-            <li><a class="all-ids" href="#">Get all user ids</a></li>
-        </ul>
     </nav>
-    <div id='display'>
-        <h3>Result</h3>
-        <div id="result" class="panel panel-default"></div>
+    <ul id="tab-bar" class="nav nav-pills">
+        <li class="active"><a class="all-ids" data-toggle="tab" href="#content-all-ids">Get all user ids</a></li>
+        <li><a class="get-user" data-toggle="tab" href="#content-get-user">Get user data</a></li>
+        <li><a class="create-user" data-toggle="tab" href="#content-create-user">Create a new user</a></li>
+        <li><a class="update-user" data-toggle="tab" href="#content-update-user">Update a user</a></li>
+        <li><a class="delete-user" data-toggle="tab" href="#content-delete-user">Delete a user</a></li>
+    </ul>
+    <div class="tab-content">
+        <!-- Get all users -->
+        <div id='content-all-ids' class="tab-pane fade in active">
+            <button class="btn">Go</button>
+            <div class="result panel panel-default"></div>
+        </div>
+
+        <!-- Get a user -->
+        <div id='content-get-user' class="tab-pane fade">
+            <form>
+                <div class="form-group">
+                    <label for="get-user-userid" class="col-2 col-form-label">User ID</label>
+                    <div class="col-6">
+                        <input type="text" name="getuseruserid" class="form-control" id="get-user-userid" placeholder="user id">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Go</button>
+            </form>
+            <div class="result panel panel-default"></div>
+        </div>
+
+        <!-- Create a user -->
+        <div id='content-create-user' class="tab-pane fade">
+            <form>
+                <div class="form-group">
+                    <label for="create-user-email" class="col-2 col-form-label">Email</label>
+                    <div class="col-6">
+                        <input type="email" name="createuseremail" class="form-control" id="create-user-email" placeholder="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="create-user-forename" class="col-2 col-form-label">Forename</label>
+                    <div class="col-6">
+                        <input type="text" name="createuserforename" class="form-control" id="create-user-forename" placeholder="forename">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="create-user-surname" class="col-2 col-form-label">Surname</label>
+                    <div class="col-6">
+                        <input type="text" name="createusersurname" class="form-control" id="create-user-surname" placeholder="surname">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Go</button>
+            </form>
+            <div class="result panel panel-default"></div>
+        </div>
+
+        <!-- Update a user -->
+        <div id='content-update-user' class="tab-pane fade">
+            <form>
+                <div class="form-group">
+                    <label for="update-user-userid" class="col-2 col-form-label">User ID</label>
+                    <div class="col-6">
+                        <input type="text" name="updateuseruserid" class="form-control" id="update-user-userid" placeholder="user id">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="update-user-email" class="col-2 col-form-label">Email</label>
+                    <div class="col-6">
+                        <input type="email" name="updateuseremail" class="form-control" id="update-user-email" placeholder="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="create-user-forename" class="col-2 col-form-label">Forename</label>
+                    <div class="col-6">
+                        <input type="text" name="updateuserforename" class="form-control" id="update-user-forename" placeholder="forename">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="create-user-surname" class="col-2 col-form-label">Surname</label>
+                    <div class="col-6">
+                        <input type="text" name="updateusersurname" class="form-control" id="update-user-surname" placeholder="surname">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Go</button>
+            </form>
+            <div class="result panel panel-default"></div>
+        </div>
+
+        <!-- Delete a user -->
+        <div id='content-delete-user' class="tab-pane fade">
+            <form>
+                <div class="form-group">
+                    <label for="delete-user-userid" class="col-2 col-form-label">User ID</label>
+                    <div class="col-6">
+                        <input type="text" name="deleteuseruserid" class="form-control" id="delete-user-userid" placeholder="user id">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Go</button>
+            </form>
+            <div class="result panel panel-default"></div>
+        </div>
+
     </div>
 </body>
 </html>
