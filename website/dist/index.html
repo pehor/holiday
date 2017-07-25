@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Hello holiday users</title>
+    <title>User management</title>
     <meta charset="utf-8">
 
     <!-- LOAD JQUERY -->
@@ -10,8 +10,8 @@
         crossorigin="anonymous"></script>
 
     <!-- LOAD BOOTSTRAPVALIDATOR -->
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 
     <!-- LOAD BOOTSTRAP -->
     <!-- Latest compiled and minified CSS -->
@@ -31,7 +31,8 @@
             margin: 2rem;
         }
         .panel, input {
-            max-width: 50rem;
+            max-width: 60rem;
+            min-width: 30rem;
         }
         .panel {
             min-height: 10rem;
@@ -54,7 +55,7 @@
 </head>
 <body>
     <nav class="navbar navbar-default">
-        <a class="navbar-brand" href="#">Holiday - users</a>
+        <a class="navbar-brand" href="#">User management system - "Postman" for users</a>
     </nav>
     <ul id="tab-bar" class="nav nav-pills">
         <li class="active"><a class="all-ids" data-toggle="tab" href="#content-all-ids">Get all user ids</a></li>
